@@ -50,6 +50,14 @@ function form_information_form($form, &$form_state) {
         '#required'=>TRUE,
     );
     
+    $form['irish_answer'] = array(
+        '#type'=>'textfield',
+        '#title'=>'Do you like the irish?',
+        '#size'=>'10',
+        '#maxlength'=>'10',
+        '#required'=>TRUE,
+    );
+    
             
     $form['submit_button'] = array(
       '#type' => 'submit',
@@ -70,7 +78,8 @@ function form_information_form_submit($form, &$form_state) {
                 'first_name'=>$form_state['values']['first_name'],
                 'second_name'=>$form_state['values']['second_name'],
                 'state'=>$form_state['values']['state'],
-                'gender'=>$form_state['values']['gender']
+                'gender'=>$form_state['values']['gender'],
+                'irish_answer'=>$form_state['values']['irish_answer'],
             ))
             ->execute();
     
