@@ -1,0 +1,106 @@
+<?php
+
+function view_user_information_menu() {
+    
+    $items=array();
+    
+    $items['view-user-information'] = array(
+        
+        'title'=>'User Information',
+        'description'=>'Allows Administrators to view User information',
+        'page callback'=>'view_user_information_views_data',
+        'page arguments'=>array('view_user_information_views_data'),
+        'access callback'=>TRUE       
+    );
+    return $items;   
+}
+
+function view_user_information_views_data() {
+    $header = array('ID', 'First Name', 'Second Name', 'State', 'Gender');
+    $rows = array();
+    
+    $rows = db_query('SELECT * FROM {user_information}');   
+    
+  return theme('table', array('header' => $header, 'rows' => $rows));
+            
+}
+
+//function view_user_information_views_data() {
+//    
+//    
+//            mysql_connect('localhost','root','')or die(mysql_error());
+//            mysql_select_db('iancaldwell') or die(mysql_error());
+//            $query=mysql_query("select * from user_information")or die(mysql_error());
+//            echo'<table border="1" ><th >User Id</th><th>First Name</th><th>Second Name</th>';
+//            while($res=mysql_fetch_array($query))
+//                {
+//                    echo'<tr><td>'.$res['id'].'</td><td>'.$res['first_name'].'</td><td>'.$res['second_name'].'</td></tr>';
+//                }
+//            echo'</table>';        
+//}
+
+//function view_user_information_views_data() {
+//    $query = db_select('user_information');
+//    $query->fields('user_information', array('id', 'first_name', 'second_name'));
+//    $result = $query->execute()->fetch();
+////    drupal_set_message($result->first_name);
+////    drupal_set_message($result->second_name);
+//    
+//    echo $result->first_name;
+//}
+
+
+//function view_user_information_views_data() {
+//    $data = 'This should be the view table';
+//    return $data;
+//}
+
+//function view_user_information_views_data() {
+//  $data['user_information']['table']['group'] = t('User Information');
+//
+//  $data['user_information']['table']['base'] = array(
+//    'field' => 'id',
+//    'title' => t('User Information'), 
+//    'help' => t('Example table contains example content and can be related to nodes.'), 
+//    'weight' => 10,
+//  );
+//
+//  $data['user_information']['table']['join'] = array(
+//    'node' => array(
+//      'left_field' => 'id', 
+//      'field' => 'id',
+//    ),
+//  );
+
+//  $data['user_information']['id'] = array(
+//    'title' => t('Example content'), 
+//    'help' => t('Some example content that references a node.'),
+//    'relationship' => array(
+//      'base' => 'node',
+//      'field' => 'id',
+//      'handler' => 'views_handler_relationship', 
+//      'label' => t('Example node'),
+//    ),
+//  );
+
+//  $data['user_information']['first_name'] = array(
+//    'title' => t('Plain text field'), 
+//    'help' => t('Just a plain text field.'), 
+//    'field' => array(
+//      'handler' => 'views_handler_field', 
+//      'click sortable' => TRUE,
+//    ), 
+//    'sort' => array(
+//      'handler' => 'views_handler_sort',
+//    ), 
+//    'filter' => array(
+//      'handler' => 'views_handler_filter_string',
+//    ), 
+//    'argument' => array(
+//      'handler' => 'views_handler_argument_string',
+//    ),
+//  );
+//    
+//     return $data;
+//}
+

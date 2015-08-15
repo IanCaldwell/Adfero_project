@@ -1,0 +1,4 @@
+core = "7.x"
+description = "Allows Administrators to view all User information"
+name = "View User Information Module"
+

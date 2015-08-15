@@ -1,0 +1,4 @@
+core = "7.x"
+description = "A simple form module that requires a user to input information"
+name = "Form Information Module"
+

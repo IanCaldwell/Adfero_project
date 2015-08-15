@@ -1,0 +1,79 @@
+<?php
+
+function form_information_menu() {
+    
+    $items=array();
+    
+    $items['form-information'] = array(
+        
+        'title'=>'Form Information',
+        'description'=>'This is the form I will be using for my Adfero project',
+        'page callback'=>'drupal_get_form',
+        'page arguments'=>array('form_information_form'),
+        'access callback'=>TRUE       
+    );
+    return $items;
+}
+
+
+function form_information_form($form, &$form_state) {  
+    
+    $form['first_name'] = array(
+        '#type'=>'textfield',
+        '#title'=>'What is your First Name?',
+        '#size'=>'30',
+        '#maxlength'=>'30',
+        '#required'=>TRUE,
+    );
+    
+    $form['second_name'] = array(
+        '#type'=>'textfield',
+        '#title'=>'What is your Second Name?',
+        '#size'=>'30',
+        '#maxlength'=>'30',
+        '#required'=>TRUE,
+    );
+    
+    $form['state'] = array(
+        '#type'=>'textfield',
+        '#title'=>'What State are you from?',
+        '#size'=>'30',
+        '#maxlength'=>'30',
+        '#required'=>TRUE,
+    );
+    
+    $form['gender'] = array(
+        '#type'=>'textfield',
+        '#title'=>'Are you a Male or Female?',
+        '#size'=>'10',
+        '#maxlength'=>'10',
+        '#required'=>TRUE,
+    );
+    
+            
+    $form['submit_button'] = array(
+      '#type' => 'submit',
+      '#value' => t('Click Here'),
+    );
+
+    return $form;
+}
+
+function form_information_form_validate($form, &$form_state) {
+    
+}
+
+function form_information_form_submit($form, &$form_state) {
+   
+    $nid=db_insert('user_information')
+            ->fields(array(
+                'first_name'=>$form_state['values']['first_name'],
+                'second_name'=>$form_state['values']['second_name'],
+                'state'=>$form_state['values']['state'],
+                'gender'=>$form_state['values']['gender']
+            ))
+            ->execute();
+    
+    drupal_set_message(t('added to the database succesfully'));
+}
+                                                 
