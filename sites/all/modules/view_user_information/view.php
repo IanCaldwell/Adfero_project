@@ -1,3 +1,9 @@
+<?php
+/*
+ * Created this to try render the view. Unsucceeded. 
+ */
+?>
+
 <html>
     <body>
         <style type="text/css">
