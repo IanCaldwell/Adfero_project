@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * 
+ * 
+ * Following instructions on how to render a table I came across this.
+ * 
+ * Did not succeed in showing a table in View. Unsure as to why.  
+ * 
+ */
+
 function hook_views_data() {
     
     $data['user_information']['table']['group']=t('User Information');
